@@ -10,6 +10,7 @@
     <modules>
         <module>../leung-common</module>
         <module>../leung-eureka-register</module>
+        <module>../leung-auth</module>
     </modules>
     <packaging>pom</packaging>
     <name>Leung-Cloud</name>
