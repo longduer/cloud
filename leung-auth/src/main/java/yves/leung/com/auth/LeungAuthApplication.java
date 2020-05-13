@@ -7,6 +7,9 @@ import yves.leung.com.common.annotation.EnableLeungAuthExceptionHandler;
 
 @EnableDiscoveryClient
 @SpringBootApplication
+/**
+ * 通过该注解，leung-auth模块的IOC容器里就已经注册了FebsAccessDeniedHandler和FebsAuthExceptionEntryPoint
+ */
 @EnableLeungAuthExceptionHandler
 public class LeungAuthApplication {
 
