@@ -1,12 +1,11 @@
 package yves.leung.com.server.system;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import yves.leung.com.common.annotation.EnableLeungAuthExceptionHandler;
-import yves.leung.com.common.annotation.EnableLeungOauth2FeignClient;
-import yves.leung.com.common.annotation.EnableLeungServerProtect;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import yves.leung.com.common.annotation.LeungCloudApplication;
 
 @EnableDiscoveryClient
@@ -17,6 +16,8 @@ import yves.leung.com.common.annotation.LeungCloudApplication;
 //@EnableLeungOauth2FeignClient
 //@EnableLeungAuthExceptionHandler
 @LeungCloudApplication
+@MapperScan("yves.leung.com.server.system.mapper")
+@EnableTransactionManagement
 public class LeungServerSystemApplication {
 
     public static void main(String[] args) {

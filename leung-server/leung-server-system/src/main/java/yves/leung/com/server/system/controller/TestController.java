@@ -12,7 +12,7 @@ public class TestController {
         return "leung-server-system";
     }
 
-    @GetMapping("user")
+    @GetMapping("currentUser")
     public Principal currentUser(Principal principal) {
         return principal;
     }
