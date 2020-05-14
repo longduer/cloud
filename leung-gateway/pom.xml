@@ -24,6 +24,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+        <!-- 因为我们的验证码服务是免认证的 可能导致服务器宕机 网关处整合阿里巴巴开源的Sentinel流量哨兵来限制验证码的获取频率-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-zuul-adapter</artifactId>
+            <version>1.6.3</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
