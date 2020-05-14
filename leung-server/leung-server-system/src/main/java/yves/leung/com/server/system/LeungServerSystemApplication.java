@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import yves.leung.com.common.annotation.LeungCloudApplication;
 
 @EnableDiscoveryClient
@@ -18,6 +19,7 @@ import yves.leung.com.common.annotation.LeungCloudApplication;
 @LeungCloudApplication
 @MapperScan("yves.leung.com.server.system.mapper")
 @EnableTransactionManagement
+@EnableSwagger2
 public class LeungServerSystemApplication {
 
     public static void main(String[] args) {
