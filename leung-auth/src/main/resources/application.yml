@@ -15,6 +15,35 @@ spring:
         max-active: 2000
         max-wait: 10000
     timeout: 5000
+  datasource:
+    dynamic:
+      # 数据库连接池使用的是Hikari，Spring Boot2.0后官方推荐使用该连接池，特点是响应速度快
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: FebsHikariCP
+      primary: base
+      datasource:
+        # 配置了一个名称为base的数据源，如果要继续添加数据源的话只需要在spring.datasource.dynamic.datasource下继续添加即可
+        base:
+          username: root
+          password: 186588
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/leung_cloud_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+mybatis-plus:
+  # 指定别名扫描路径，这个路径后续在febs-common模块里定义，该路径下的实体类将自动配置别名，默认为类名首字母小写。配置别名后，便可以直接在MyBatis XML文件里使用了
+  type-aliases-package: yves.leung.common.entity.system
+  # 指定MyBatis XML文件路径
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 指定为null，否则再插入空值时会报“无效的列类型”错误
+    jdbc-type-for-null: null
+  global-config:
+    # 设置为false关闭MyBatis Plus Banner打印
+    banner: false
 
 eureka:
   instance:

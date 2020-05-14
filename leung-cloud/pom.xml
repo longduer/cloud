@@ -16,7 +16,7 @@
 
     </modules>
     <packaging>pom</packaging>
-    <name>Leung-Cloud</name>
+    <name>leung-cloud</name>
     <description>Leung-Cloud：Spring Cloud，Spring Security OAuth2 微服务权限管理系统</description>
 
     <parent>
