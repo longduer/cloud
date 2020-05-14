@@ -6,16 +6,23 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import yves.leung.com.auth.service.ValidateCodeService;
 import yves.leung.com.common.entity.LeungResponse;
 import yves.leung.com.common.exception.LeugnAuthException;
+import yves.leung.com.common.exception.ValidateCodeException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
 
 @RestController
 public class SecurityController {
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
+
+    @Autowired
+    private ValidateCodeService validateCodeService;
 
     @GetMapping("oauth/test")
     public String testOauth() {
@@ -36,5 +43,10 @@ public class SecurityController {
             throw new LeugnAuthException("退出登录失败");
         }
         return febsResponse.message("退出登录成功");
+    }
+
+    @GetMapping("captcha")
+    public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException, ValidateCodeException {
+        validateCodeService.create(request, response);
     }
 }

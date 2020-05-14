@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import yves.leung.com.auth.filter.ValidateCodeFilter;
 import yves.leung.com.auth.service.LeungUserDetailService;
 
 /***
@@ -26,6 +28,9 @@ public class LeungSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private ValidateCodeFilter validateCodeFilter;
+
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -33,7 +38,8 @@ public class LeungSecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
+        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .requestMatchers()
                 .antMatchers("/oauth/**") //安全配置类只对/oauth/开头的请求有效
                 .and()
                 .authorizeRequests()

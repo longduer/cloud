@@ -4,7 +4,8 @@ server:
 spring:
   application:
     name: leung-auth
-  redis:
+  # Lettuce来代替Jedis，Lettuce基于Netty异步，拥有更好的性能，所以在生成验证码之前，我们先来整合Lettuce。
+  lettuce:
     database: 0
     host: 127.0.0.1
     port: 6379

@@ -13,4 +13,9 @@ public class LeungAuthProperties {
     private LeungClientsProperties[] clients = {};
     private int accessTokenValiditySeconds = 60 * 60 * 24;
     private int refreshTokenValiditySeconds = 60 * 60 * 24 * 7;
+
+    private LeungValidateCodeProperties code = new LeungValidateCodeProperties();
+
+    // 免认证路径
+    private String anonUrl;
 }
