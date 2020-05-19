@@ -77,7 +77,12 @@ public class LeungAuthorizationServerConfigure extends AuthorizationServerConfig
 
     @Bean
     public TokenStore tokenStore() {
-        return new RedisTokenStore(redisConnectionFactory);
+
+        RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+        // 问题描述：同一个账号在不同的地点获取令牌是一样的，所以当其中一个用户退出登录后，另一个用户的令牌也会失效
+        // 解决每次生成的 token都一样的问题
+        // redisTokenStore.setAuthenticationKeyGenerator(oAuth2Authentication -> UUID.randomUUID().toString());
+        return redisTokenStore;
     }
 
     @Primary
