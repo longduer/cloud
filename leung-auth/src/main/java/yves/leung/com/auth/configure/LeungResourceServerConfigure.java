@@ -43,6 +43,10 @@ public class LeungResourceServerConfigure extends ResourceServerConfigurerAdapte
                 .and().httpBasic();
     }
 
+    /***
+     * 在资源服务中配置自定义异常处理 详见common包中注解EnableLeungAuthExceptionHandler
+     * @param resources
+     */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.authenticationEntryPoint(exceptionEntryPoint)

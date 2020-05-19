@@ -13,6 +13,25 @@ import yves.leung.com.common.utils.LeungUtil;
 
 import javax.servlet.http.HttpServletResponse;
 
+/***
+ * 处理Zuul异常
+ * 当Zuul转发请求超时时，系统返回如下响应：
+ *
+ * {
+ *     "timestamp": "2019-08-07T07:58:21.938+0000",
+ *     "status": 504,
+ *     "error": "Gateway Timeout",
+ *     "message": "com.netflix.zuul.exception.ZuulException: Hystrix Readed time out"
+ * }
+ * 当处理转发请求的微服务模块不可用时，系统返回：
+ *
+ * {
+ *     "timestamp": "2019-08-07T08:01:31.829+0000",
+ *     "status": 500,
+ *     "error": "Internal Server Error",
+ *     "message": "GENERAL"
+ * }
+ */
 @Slf4j
 @Component
 public class LeungGatewayErrorFilter  extends SendErrorFilter {

@@ -29,6 +29,10 @@ public class LeungServerTestResourceServerConfigure extends ResourceServerConfig
                 .antMatchers("/**").authenticated();
     }
 
+    /***
+     * 在资源服务中配置自定义异常处理 详见common包中注解EnableLeungAuthExceptionHandler，资源服务中都会引用此段代码
+     * @param resources
+     */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.authenticationEntryPoint(exceptionEntryPoint)

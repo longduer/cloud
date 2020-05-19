@@ -9,11 +9,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.file.AccessDeniedException;
 
+/***
+ * 用于处理用户无权限返回403
+ */
 public class LeungAccessDeniedHandler implements AccessDeniedHandler {
     @Override
-    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, org.springframework.security.access.AccessDeniedException e) throws IOException, ServletException {
+    public void handle(HttpServletRequest httpServletRequest,
+                       HttpServletResponse httpServletResponse,
+                       org.springframework.security.access.AccessDeniedException e) throws IOException, ServletException {
         LeungResponse febsResponse = new LeungResponse();
         LeungUtil.makeResponse(
                 httpServletResponse, MediaType.APPLICATION_JSON_UTF8_VALUE,

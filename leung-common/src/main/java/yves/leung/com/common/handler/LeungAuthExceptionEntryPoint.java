@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/***
+ * 令牌不正确返回 401
+ */
 public class LeungAuthExceptionEntryPoint implements AuthenticationEntryPoint {
 
     @Override

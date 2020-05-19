@@ -72,7 +72,7 @@ public class LeungAuthorizationServerConfigure extends AuthorizationServerConfig
                 .userDetailsService(userDetailService)
                 .authenticationManager(authenticationManager)
                 .tokenServices(defaultTokenServices())
-                .exceptionTranslator(exceptionTranslator);
+                .exceptionTranslator(exceptionTranslator); // LeungWebResponseExceptionTranslator异常翻译器生效，我们还需在认证服务器配置类
     }
 
     @Bean
