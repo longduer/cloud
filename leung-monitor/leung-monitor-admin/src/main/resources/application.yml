@@ -1,0 +1,15 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: leung-monitor-admin
+  boot:
+    admin:
+      ui:
+        title: ${spring.application.name}
+  security:
+    user:
+      name: yves
+      password: 186588
+

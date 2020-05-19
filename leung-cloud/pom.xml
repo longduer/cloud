@@ -13,6 +13,7 @@
         <module>../leung-auth</module>
         <module>../leung-gateway</module>
         <module>../leung-server</module>
+        <module>../leung-monitor</module>
 
     </modules>
     <packaging>pom</packaging>

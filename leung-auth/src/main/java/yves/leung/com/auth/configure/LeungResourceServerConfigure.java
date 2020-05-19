@@ -37,8 +37,9 @@ public class LeungResourceServerConfigure extends ResourceServerConfigurerAdapte
         http.csrf().disable()
                 .requestMatchers().antMatchers("/**") //该安全配置对所有请求都生效
                 .and()
-                .authorizeRequests()
-                .antMatchers(anonUrls).permitAll()
+                .authorizeRequests().antMatchers(anonUrls).permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and().httpBasic();
     }

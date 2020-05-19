@@ -23,7 +23,9 @@ public class LeungServerTestResourceServerConfigure extends ResourceServerConfig
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .requestMatchers().antMatchers("/**") //该安全配置对所有请求都生效
+                .requestMatchers().antMatchers("/**") // 该安全配置对所有请求都生效
+                .and()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").authenticated();

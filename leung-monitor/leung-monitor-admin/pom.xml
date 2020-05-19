@@ -3,38 +3,48 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>leung-cloud</artifactId>
         <groupId>yves.leung.com</groupId>
+        <artifactId>leung-monitor</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../leung-cloud/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>yves.leung.com</groupId>
-    <artifactId>leung-eureka-register</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>leung-eureka-register</name>
-    <description>Leung-Eureka服务注册中心 register</description>
 
-<!--    <properties>-->
-<!--        <java.version>1.8</java.version>-->
-<!--        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>-->
-<!--    </properties>-->
+    <groupId>yves.leung.com</groupId>
+    <artifactId>leung-monitor-admin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>leung-monitor-admin</name>
+    <description>Leung-Monitor-Admin基于Spring Boot Admin搭建的监控程序</description>
+
+    <properties>
+        <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
+    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <!-- 控制台中，经常会抛出如下异常： java.lang.IllegalStateException: Calling [asyncError()] is not valid for a request with Async state [MUST_DISPATCH]
+                    需要将tomcat换成 替换为 jetty，解决此问题-->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 替换为 jetty-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-security</artifactId>
-        </dependency>
-
-        <!-- 添加SBA客户端依赖 -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>2.1.6</version>
         </dependency>
 
         <dependency>
@@ -56,6 +66,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
