@@ -1,4 +1,4 @@
-package yves.leung.com.gateway.configure;
+package yves.leung.com.gateway.zuul.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

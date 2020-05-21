@@ -1,4 +1,4 @@
-package yves.leung.com.gateway.filter;
+package yves.leung.com.gateway.zuul.filter;
 
 import com.alibaba.csp.sentinel.adapter.gateway.common.SentinelGatewayConstants;
 import com.alibaba.csp.sentinel.adapter.gateway.common.api.ApiDefinition;
@@ -16,7 +16,7 @@ import com.netflix.zuul.ZuulFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import yves.leung.com.gateway.fallback.LeungGatewayBlockFallbackProvider;
+import yves.leung.com.gateway.zuul.fallback.LeungGatewayBlockFallbackProvider;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;

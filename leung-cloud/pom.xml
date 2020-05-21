@@ -11,6 +11,7 @@
         <module>../leung-common</module>
         <module>../leung-eureka-register</module>
         <module>../leung-auth</module>
+        <module>../leung-gateway-zuul</module>
         <module>../leung-gateway</module>
         <module>../leung-server</module>
         <module>../leung-monitor</module>

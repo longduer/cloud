@@ -1,4 +1,4 @@
-package yves.leung.com.gateway.filter;
+package yves.leung.com.gateway.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -14,7 +14,7 @@ import org.springframework.util.Base64Utils;
 import yves.leung.com.common.entity.LeungConstant;
 import yves.leung.com.common.entity.LeungResponse;
 import yves.leung.com.common.utils.LeungUtil;
-import yves.leung.com.gateway.properties.LeungGatewayProperties;
+import yves.leung.com.gateway.zuul.properties.LeungGatewayProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

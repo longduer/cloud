@@ -1,4 +1,4 @@
-package yves.leung.com.gateway;
+package yves.leung.com.gateway.zuul;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

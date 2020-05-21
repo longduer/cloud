@@ -1,4 +1,4 @@
-package yves.leung.com.gateway.filter;
+package yves.leung.com.gateway.zuul.filter;
 
 import com.netflix.zuul.context.RequestContext;
 import io.lettuce.core.dynamic.support.ReflectionUtils;

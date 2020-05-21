@@ -1,4 +1,4 @@
-package yves.leung.com.gateway.fallback;
+package yves.leung.com.gateway.zuul.fallback;
 
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.fallback.BlockResponse;
 import com.alibaba.csp.sentinel.adapter.gateway.zuul.fallback.ZuulBlockFallbackProvider;
