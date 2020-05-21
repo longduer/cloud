@@ -16,6 +16,22 @@ spring:
         username: yves
         # 对应SBA服务端的密码
         password: 186588
+  cloud:
+    # nacos 服务注册发现 与下面的eureka只能二选一
+    nacos:
+      discovery:
+        server-addr: localhost:8001
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 20
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    instance-info-replication-interval-seconds: 30
+#    registry-fetch-interval-seconds: 3
+#    serviceUrl:
+#      defaultZone: http://yves:186588@localhost:8001/register/eureka/
+
 # 配置了SBA客户端的名称，描述和版本信息
 info:
   app:
@@ -33,16 +49,6 @@ management:
       # 表示总是展示详细的健康信息
       show-details: ALWAYS
 
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://yves:186588@localhost:8001/register/eureka/
 # /auth开头的请求都会被转发到名称为leung-auth的服务上，
 # 由于我们需要在请求头中携带令牌，所以sensitiveHeaders设置为*，表示不过滤请求头信息，即请求的请求头信息将原封不动的转发出去。
 # 此外，因为Zuul已经包含了ribbon和hystrix依赖，所以我们在使用Zuul的同时，可以添加ribbon和hystrix相关配置

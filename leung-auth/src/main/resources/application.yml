@@ -43,6 +43,28 @@ spring:
         username: yves
         # 对应SBA服务端的密码
         password: 186588
+  # nacos 服务注册发现 与下面的eureka只能二选一
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8001
+#eureka:
+#  instance:
+#    # 向Eureka 服务端发送心跳的间隔时间，单位为秒，用于服务续约。这里配置为20秒，即每隔20秒向febs-register发送心跳，表明当前服务没有宕机；
+#    lease-renewal-interval-in-seconds: 20
+#  client:
+#    # 为true时表示将当前服务注册到Eureak服务端
+#    register-with-eureka: true
+#    # 为true时表示从Eureka 服务端获取注册的服务信息
+#    fetch-registry: true
+#    # 新实例信息的变化到Eureka服务端的间隔时间，单位为秒
+#    instance-info-replication-interval-seconds: 30
+#    # 默认值为30秒，即每30秒去Eureka服务端上获取服务并缓存，这里指定为3秒的原因是方便开发时测试，实际可以指定为默认值即可
+#    registry-fetch-interval-seconds: 3
+#    serviceUrl:
+#      # 指定Eureka服务端地址
+#      defaultZone: http://yves:186588@localhost:8001/register/eureka/
+
 # 配置了SBA客户端的名称，描述和版本信息
 info:
   app:
@@ -72,20 +94,3 @@ mybatis-plus:
   global-config:
     # 设置为false关闭MyBatis Plus Banner打印
     banner: false
-
-eureka:
-  instance:
-    # 向Eureka 服务端发送心跳的间隔时间，单位为秒，用于服务续约。这里配置为20秒，即每隔20秒向febs-register发送心跳，表明当前服务没有宕机；
-    lease-renewal-interval-in-seconds: 20
-  client:
-    # 为true时表示将当前服务注册到Eureak服务端
-    register-with-eureka: true
-    # 为true时表示从Eureka 服务端获取注册的服务信息
-    fetch-registry: true
-    # 新实例信息的变化到Eureka服务端的间隔时间，单位为秒
-    instance-info-replication-interval-seconds: 30
-    # 默认值为30秒，即每30秒去Eureka服务端上获取服务并缓存，这里指定为3秒的原因是方便开发时测试，实际可以指定为默认值即可
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      # 指定Eureka服务端地址
-      defaultZone: http://yves:186588@localhost:8001/register/eureka/

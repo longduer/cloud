@@ -10,6 +10,10 @@ spring:
         username: yves
         password: 186588
   cloud:
+    # nacos 服务注册发现 与下面的eureka只能二选一
+    nacos:
+      discovery:
+        server-addr: localhost:8001
     gateway:
       routes:
         - id: leung-auth
@@ -42,6 +46,18 @@ spring:
               args:
                 name: authfallback
                 fallbackUri: forward:/fallback/leung-server-test
+
+# 服务注册与发现
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 20
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    instance-info-replication-interval-seconds: 30
+#    registry-fetch-interval-seconds: 3
+#    serviceUrl:
+#      defaultZone: http://yves:186588@localhost:8001/register/eureka/
 #
 hystrix:
   command:
@@ -51,18 +67,6 @@ hystrix:
           thread:
             # 全局超时时间
             timeoutInMilliseconds: 3000
-
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    registry-fetch-interval-seconds: 3
-    serviceUrl:
-      defaultZone: http://yves:186588@localhost:8001/register/eureka/
-
 management:
   endpoint:
     health:

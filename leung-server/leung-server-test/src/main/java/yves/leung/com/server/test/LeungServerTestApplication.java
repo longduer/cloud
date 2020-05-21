@@ -2,15 +2,12 @@ package yves.leung.com.server.test;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import yves.leung.com.common.annotation.EnableLeungAuthExceptionHandler;
-import yves.leung.com.common.annotation.EnableLeungOauth2FeignClient;
-import yves.leung.com.common.annotation.EnableLeungServerProtect;
 import yves.leung.com.common.annotation.LeungCloudApplication;
+// 若采用nacos配置中心，不需要Erueka服务查找与发现
+//@EnableDiscoveryClient
 
-@EnableDiscoveryClient
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 // 开启fegin客户端，此时需要测试访问server-system

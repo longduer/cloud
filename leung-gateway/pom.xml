@@ -27,6 +27,20 @@
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
             <version>1.6.3</version>
         </dependency>
+
+        <!-- begin : spring-cloud-alibaba-dependencies.0.9.0.RELEASE中定义的sentinel版本还是1.5.2的，版本不兼容，控制台报错-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.6.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-parameter-flow-control</artifactId>
+            <version>1.6.3</version>
+        </dependency>
+        <!-- end  : -->
+
         <dependency>
             <groupId>yves.leung.com</groupId>
             <artifactId>leung-common</artifactId>

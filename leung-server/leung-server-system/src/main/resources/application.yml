@@ -31,6 +31,21 @@ spring:
         username: yves
         # 对应SBA服务端的密码
         password: 186588
+  cloud:
+    # nacos 服务注册发现 与下面的eureka只能二选一
+    nacos:
+      discovery:
+        server-addr: localhost:8001
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 20
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    instance-info-replication-interval-seconds: 30
+#    serviceUrl:
+#      defaultZone: http://yves:186588@localhost:8001/register/eureka/
+
 # 配置了SBA客户端的名称，描述和版本信息
 info:
   app:
@@ -55,16 +70,6 @@ mybatis-plus:
     jdbc-type-for-null: null
   global-config:
     banner: false
-
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 20
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    instance-info-replication-interval-seconds: 30
-    serviceUrl:
-      defaultZone: http://yves:186588@localhost:8001/register/eureka/
 
 security:
   oauth2:
