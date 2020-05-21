@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -16,6 +17,19 @@
         <module name="leung-auth" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="leung-auth" target="1.8" />
+      <module name="leung-cloud" target="1.8" />
+      <module name="leung-common" target="1.8" />
+      <module name="leung-eureka-register" target="1.8" />
+      <module name="leung-gateway" target="1.8" />
+      <module name="leung-gateway-zuul" target="1.8" />
+      <module name="leung-monitor" target="1.8" />
+      <module name="leung-monitor-admin" target="1.8" />
+      <module name="leung-server" target="1.8" />
+      <module name="leung-server-system" target="1.8" />
+      <module name="leung-server-test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
