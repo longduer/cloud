@@ -75,6 +75,10 @@ public class LeungAuthorizationServerConfigure extends AuthorizationServerConfig
                 .exceptionTranslator(exceptionTranslator); // LeungWebResponseExceptionTranslator异常翻译器生效，我们还需在认证服务器配置类
     }
 
+    /**
+     * TokenStore 1: RedisTokenStore令牌存储策略。使用这种策略时，用户的access_token将存储到Redis中，退出登录后，Redis中存储的令牌也会被清除
+     * @return
+     */
     @Bean
     public TokenStore tokenStore() {
 
@@ -84,6 +88,45 @@ public class LeungAuthorizationServerConfigure extends AuthorizationServerConfig
         // redisTokenStore.setAuthenticationKeyGenerator(oAuth2Authentication -> UUID.randomUUID().toString());
         return redisTokenStore;
     }
+
+    /**
+     * TokenStore 2: InMemoryTokenStore策略将令牌存储到内存中，优点就是无需依赖第三方存储，对于开发小型服务是不错的选择；缺点是认证服务器故障重启后，之前存储的令牌就丢失。
+     * @return
+     */
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new InMemoryTokenStore();
+//    }
+
+
+    /**
+     * TokenStore 3: JdbcTokenStore 该策略使用数据库来存储令牌。在使用这种策略之前，我们需要先准备好库表。Spring Security OAuth仓库可以找到相应的脚本：https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql。
+     */
+//    @Autowired
+//    private DataSource dataSource;
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JdbcTokenStore(dataSource);
+//    }
+
+    /**
+     * TokenStore 4: JwtTokenStore 前面三种存储策略生成的令牌都是使用UUID生成的无意义字符串，我们也可以使用JwtTokenStore生成JWT格式令牌
+     */
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new JwtTokenStore(jwtAccessTokenConverter());
+//    }
+//    @Bean
+//    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+//        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+//        DefaultAccessTokenConverter defaultAccessTokenConverter = (DefaultAccessTokenConverter) accessTokenConverter.getAccessTokenConverter();
+//        DefaultUserAuthenticationConverter userAuthenticationConverter = new DefaultUserAuthenticationConverter();
+//        userAuthenticationConverter.setUserDetailsService(userDetailService);
+//        defaultAccessTokenConverter.setUserTokenConverter(userAuthenticationConverter);
+//        accessTokenConverter.setSigningKey("leung");
+//        return accessTokenConverter;
+//    }
+
 
     @Primary
     @Bean

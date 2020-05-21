@@ -9,10 +9,10 @@
         <relativePath>../leung-cloud/pom.xml</relativePath>
     </parent>
     <groupId>yves.leung.com</groupId>
-    <artifactId>leung-gateway</artifactId>
+    <artifactId>leung-gateway-zuul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>leung-gateway</name>
-    <description>服务网关</description>
+    <name>leung-gateway-zuul</name>
+    <description>Zuul服务网关</description>
 
     <dependencies>
         <dependency>

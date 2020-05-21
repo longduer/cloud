@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: leung-gateway
+    name: leung-gateway-zuul
   # 闭数据库自动装配:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
