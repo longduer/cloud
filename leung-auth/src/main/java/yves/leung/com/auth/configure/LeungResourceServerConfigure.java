@@ -34,13 +34,13 @@ public class LeungResourceServerConfigure extends ResourceServerConfigurerAdapte
     public void configure(HttpSecurity http) throws Exception {
         String[] anonUrls = StringUtils.splitByWholeSeparatorPreserveAllTokens(properties.getAnonUrl(), ",");
 
-        http.csrf().disable()
+        http.csrf().disable() //无需携带令牌
                 .requestMatchers().antMatchers("/**") //该安全配置对所有请求都生效
                 .and()
-                .authorizeRequests().antMatchers(anonUrls).permitAll()
+                .authorizeRequests().antMatchers(anonUrls).permitAll() //免费认证
                 .and()
-                .authorizeRequests().antMatchers("/actuator/**").permitAll()
-                .antMatchers("/**").authenticated()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll() //SBA监控接口免认证
+                .antMatchers("/**").authenticated() //其它都需要认证
                 .and().httpBasic();
     }
 

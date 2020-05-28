@@ -18,9 +18,10 @@ public class LeungOAuth2FeignConfigure {
     @Bean
     public RequestInterceptor oauth2FeignRequestInterceptor() {
         return requestTemplate -> {
-            // 添加 Zuul Token
+            // 添加 Zuul Token 因为现在微服务需要校验Zuul Token，所以我们需要在上一节定义的Feign拦截器里也加入Zuul Token，否则Feign调用微服务会报403异常。
             String zuulToken = new String(Base64Utils.encode(LeungConstant.ZUUL_TOKEN_VALUE.getBytes()));
             requestTemplate.header(LeungConstant.ZUUL_TOKEN_HEADER, zuulToken);
+
 
             Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
             if (details instanceof OAuth2AuthenticationDetails) {

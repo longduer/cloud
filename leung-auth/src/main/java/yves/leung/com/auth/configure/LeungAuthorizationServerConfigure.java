@@ -22,6 +22,10 @@ import yves.leung.com.auth.properties.LeungClientsProperties;
 import yves.leung.com.auth.service.LeungUserDetailService;
 import yves.leung.com.auth.translator.LeungWebResponseExceptionTranslator;
 
+
+/***
+ * 此类主要用于处理登录oauth2令牌获取的具体处理
+ */
 @Configuration
 //开启认证服务器相关配置
 @EnableAuthorizationServer

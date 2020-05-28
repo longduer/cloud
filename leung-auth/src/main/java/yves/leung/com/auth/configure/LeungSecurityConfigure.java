@@ -20,7 +20,7 @@ import yves.leung.com.auth.service.LeungUserDetailService;
 
 //同时出现 认证过滤器（oauth/*相关请求）与资源过滤器LeungResourceServerConfigure（/*），我们希望所有请求先通过认证过滤器，
 // 所以oauth的排行级设置为2，高于资源过滤器LeungResourceServerConfigure的优先级10要高。（数字越小，优先级越高）
-@Order(2)
+@Order(2) // WebSecurityConfigurerAdapter 过滤器默认的优秀级是：@Order(100)
 @EnableWebSecurity
 public class LeungSecurityConfigure extends WebSecurityConfigurerAdapter {
 
@@ -47,7 +47,14 @@ public class LeungSecurityConfigure extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/oauth/**").authenticated()
                 .and()
-                .csrf().disable();
+                .csrf().disable(); // 禁用csrf功能 即无令牌访问 因为通过用户名和密码才能获得到令牌
+
+        // CSRF(Cross-site request forgery) 是指跨站请求伪造，是 web 常见的攻击之一，
+        // 从 Spring Security 4.0 开始，默认情况下 security 会启用 CSRF 保护，以防止 CSRF 攻击应用程序。
+
+        // 默认情况下，当 spring security 在类路径上时，它要求用户向应用程序发送请求时，
+        // 都必须携带一个有效的 csrf 令牌，而 Eureka 客户端通常不会拥有有效的跨站点请求（CSRF）令牌，此时 Eureka Serer 端应该对 eureka 的请求路径放行。
+
     }
 
     @Override
